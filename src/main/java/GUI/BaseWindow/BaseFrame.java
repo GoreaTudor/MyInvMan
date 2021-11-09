@@ -9,6 +9,7 @@ public class BaseFrame extends JFrame {
 
     private static BaseFrame frame = new BaseFrame();
 
+    JPanel container;
 
     private WelcomePanel welcomePanel;
     private SignUpPanel signUpPanel;
@@ -19,11 +20,16 @@ public class BaseFrame extends JFrame {
         this.setTitle("Inventory Management");
         this.setSize(500, 500);
 
+        container = new JPanel();
+        container.setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
+
         welcomePanel = new WelcomePanel();
         signUpPanel = new SignUpPanel();
 
-        this.add(welcomePanel);
-        this.add(signUpPanel);
+        container.add(welcomePanel);
+        container.add(signUpPanel);
+
+        this.add(container);
         this.setVisible(true);
     }
 

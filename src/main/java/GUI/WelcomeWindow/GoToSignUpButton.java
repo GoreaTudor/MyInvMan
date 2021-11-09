@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 class GoToSignUpButton extends JButton implements ActionListener {
 
-    public GoToSignUpButton () {
+    GoToSignUpButton () {
         this.addActionListener(this);
         this.setFocusable(false);
         this.setText("Sign up");

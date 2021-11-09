@@ -22,6 +22,7 @@ public class DatabaseConnector {
             connection = DriverManager.getConnection(scanner.next(), scanner.next(), scanner.next());
             statement = connection.createStatement();
 
+            scanner.close();
             System.out.println("Connection Successful!");
 
         } catch (FileNotFoundException e) {

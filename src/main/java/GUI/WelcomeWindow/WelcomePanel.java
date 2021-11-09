@@ -1,4 +1,4 @@
-package GUI.WelcomePanel;
+package GUI.WelcomeWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,6 +16,8 @@ public class WelcomePanel extends JPanel {
 
         this.add(signUpButton);
         this.add(signInButton);
+
+        this.setVisible(true);
     }
 
 }

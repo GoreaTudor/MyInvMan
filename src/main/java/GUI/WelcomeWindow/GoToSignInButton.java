@@ -1,4 +1,4 @@
-package GUI.WelcomePanel;
+package GUI.WelcomeWindow;
 
 import GUI.BaseWindow.BaseFrame;
 
@@ -6,17 +6,17 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GoToSignUpButton extends JButton implements ActionListener {
+class GoToSignInButton extends JButton implements ActionListener {
 
-    public GoToSignUpButton () {
+    public GoToSignInButton () {
         this.addActionListener(this);
         this.setFocusable(false);
-        this.setText("Sign up");
+        this.setText("Sign in");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Sign up pressed");
-        BaseFrame.hideWelcomePanel();
+        System.out.println("Sign in pressed");
+        BaseFrame.WelcomePanelVisibility(false);
     }
 }

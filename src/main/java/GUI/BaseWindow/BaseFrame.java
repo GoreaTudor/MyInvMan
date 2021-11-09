@@ -1,6 +1,7 @@
 package GUI.BaseWindow;
 
-import GUI.WelcomePanel.WelcomePanel;
+import GUI.SignUpWindow.SignUpPanel;
+import GUI.WelcomeWindow.WelcomePanel;
 
 import javax.swing.*;
 
@@ -10,16 +11,19 @@ public class BaseFrame extends JFrame {
 
 
     private WelcomePanel welcomePanel;
+    private SignUpPanel signUpPanel;
 
 
     private BaseFrame () {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setTitle("Inventory Management");
-        //this.setSize(300, 300);
+        this.setSize(500, 500);
 
         welcomePanel = new WelcomePanel();
+        signUpPanel = new SignUpPanel();
 
         this.add(welcomePanel);
+        this.add(signUpPanel);
         this.setVisible(true);
     }
 
@@ -29,7 +33,20 @@ public class BaseFrame extends JFrame {
     }
 
 
-    public static void hideWelcomePanel() {
-        frame.welcomePanel.setVisible(false);
+    public static void WelcomePanelVisibility(boolean v) {
+        frame.welcomePanel.setVisible(v);
+    }
+
+    public static void SignUpPanelVisibility(boolean v) {
+        frame.signUpPanel.setVisible(v);
+    }
+
+
+    public static WelcomePanel getWelcomePanel () {
+        return frame.welcomePanel;
+    }
+
+    public static SignUpPanel getSignUpPanel () {
+        return frame.signUpPanel;
     }
 }

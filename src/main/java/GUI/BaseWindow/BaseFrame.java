@@ -6,13 +6,30 @@ import javax.swing.*;
 
 public class BaseFrame extends JFrame {
 
-    WelcomePanel welcomePanel;
+    private static BaseFrame frame = new BaseFrame();
 
-    BaseFrame () {
+
+    private WelcomePanel welcomePanel;
+
+
+    private BaseFrame () {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setTitle("Inventory Management");
+        //this.setSize(300, 300);
 
         welcomePanel = new WelcomePanel();
 
         this.add(welcomePanel);
+        this.setVisible(true);
+    }
+
+
+    public static BaseFrame getFrame () {
+        return frame;
+    }
+
+
+    public static void hideWelcomePanel() {
+        frame.welcomePanel.setVisible(false);
     }
 }

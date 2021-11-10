@@ -4,6 +4,7 @@ public class User {
     private static User user = new User();
 
     private String username;
+    private boolean isAdmin;
 
     private User () {
         this.username = "";
@@ -18,5 +19,12 @@ public class User {
     }
     public static void setUsername(String username) {
         user.username = username;
+    }
+
+    public static boolean isAdmin() {
+        return user.isAdmin;
+    }
+    public static void setIsAdmin(boolean isAdmin) {
+        user.isAdmin = isAdmin;
     }
 }

@@ -2,12 +2,14 @@ package GUI.SignInWindow;
 
 import CustomExceptions.InvalidPasswordException;
 import CustomExceptions.InvalidUsernameException;
+import CustomExceptions.NonexistentAccountException;
 import Data.Database.DatabaseConnector;
 import GUI.BaseWindow.BaseFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Arrays;
@@ -25,6 +27,7 @@ class SubmitSignInButton extends JButton implements ActionListener {
         String username = BaseFrame.getSignInPanel().getUsernameField().getText();
         char[] password = BaseFrame.getSignInPanel().getPasswordField().getPassword();
         int hashedPWD = Arrays.hashCode(password);
+        ResultSet resultSet;
 
         System.out.println("username=" + username);
         System.out.println("password=" + password);
@@ -38,12 +41,13 @@ class SubmitSignInButton extends JButton implements ActionListener {
             if (password.length < 4 || password.length > 20)
                 throw new InvalidPasswordException();
 
-            DatabaseConnector.getStatement().executeQuery("");
+            resultSet = DatabaseConnector.getStatement().executeQuery("SELECT * FROM user_table WHERE username = '" + username + "';");
 
-            BaseFrame.signUpPanelVisibility(false);
-            BaseFrame.welcomePanelVisibility(true);
+            if (!resultSet.next())
+                throw new NonexistentAccountException();
 
-            JOptionPane.showMessageDialog(null, "Account created successfully", "Info", JOptionPane.INFORMATION_MESSAGE);
+            BaseFrame.signInPanelVisibility(false);
+            //BaseFrame.welcomePanelVisibility(true);
 
         } catch (InvalidUsernameException ex) {
             JOptionPane.showMessageDialog(null, "Username must be between 4 and 20 characters", "Invalid Username", JOptionPane.ERROR_MESSAGE);
@@ -51,8 +55,8 @@ class SubmitSignInButton extends JButton implements ActionListener {
         } catch (InvalidPasswordException ex) {
             JOptionPane.showMessageDialog(null, "Password must be between 4 and 20 characters", "Invalid Password", JOptionPane.ERROR_MESSAGE);
 
-        } catch (SQLIntegrityConstraintViolationException ex) { // duplicate primary key
-            JOptionPane.showMessageDialog(null, "This username is unavailable, please use a different username", "Account error", JOptionPane.ERROR_MESSAGE);
+        } catch (NonexistentAccountException ex) {
+            JOptionPane.showMessageDialog(null, "The account does not exist", "Log in failed", JOptionPane.ERROR_MESSAGE);
 
         } catch (SQLException ex) {
             ex.printStackTrace();

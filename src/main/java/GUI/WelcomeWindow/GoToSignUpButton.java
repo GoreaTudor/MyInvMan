@@ -17,7 +17,7 @@ class GoToSignUpButton extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("Sign up pressed");
-        BaseFrame.WelcomePanelVisibility(false);
-        BaseFrame.SignUpPanelVisibility(true);
+        BaseFrame.welcomePanelVisibility(false);
+        BaseFrame.signUpPanelVisibility(true);
     }
 }

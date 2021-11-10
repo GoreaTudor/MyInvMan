@@ -1,5 +1,6 @@
 package GUI.BaseWindow;
 
+import GUI.SignInWindow.SignInPanel;
 import GUI.SignUpWindow.SignUpPanel;
 import GUI.WelcomeWindow.WelcomePanel;
 
@@ -13,6 +14,7 @@ public class BaseFrame extends JFrame {
 
     private WelcomePanel welcomePanel;
     private SignUpPanel signUpPanel;
+    private SignInPanel signInPanel;
 
 
     private BaseFrame () {
@@ -25,9 +27,11 @@ public class BaseFrame extends JFrame {
 
         welcomePanel = new WelcomePanel();
         signUpPanel = new SignUpPanel();
+        signInPanel = new SignInPanel();
 
         container.add(welcomePanel);
         container.add(signUpPanel);
+        container.add(signInPanel);
 
         this.add(container);
         this.setVisible(true);
@@ -39,12 +43,16 @@ public class BaseFrame extends JFrame {
     }
 
 
-    public static void WelcomePanelVisibility(boolean v) {
+    public static void welcomePanelVisibility(boolean v) {
         frame.welcomePanel.setVisible(v);
     }
 
-    public static void SignUpPanelVisibility(boolean v) {
+    public static void signUpPanelVisibility(boolean v) {
         frame.signUpPanel.setVisible(v);
+    }
+
+    public static void signInPanelVisibility(boolean v) {
+        frame.signInPanel.setVisible(v);
     }
 
 
@@ -54,5 +62,9 @@ public class BaseFrame extends JFrame {
 
     public static SignUpPanel getSignUpPanel () {
         return frame.signUpPanel;
+    }
+
+    public static SignInPanel getSignInPanel() {
+        return frame.signInPanel;
     }
 }

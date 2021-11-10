@@ -1,4 +1,4 @@
-package GUI.SignUpWindow;
+package GUI.SignInWindow;
 
 import GUI.BaseWindow.BaseFrame;
 
@@ -16,7 +16,7 @@ class BackButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        BaseFrame.signUpPanelVisibility(false);
+        BaseFrame.signInPanelVisibility(false);
         BaseFrame.welcomePanelVisibility(true);
     }
 }

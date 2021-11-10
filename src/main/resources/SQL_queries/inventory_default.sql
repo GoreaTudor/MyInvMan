@@ -1,3 +1,4 @@
+DROP PROCEDURE IF EXISTS newInv;
 DROP VIEW IF EXISTS inventory_view;
 DROP TABLE IF EXISTS inventory;
 
@@ -14,38 +15,46 @@ FROM user_table
 LEFT JOIN inventory ON user_table.username = inventory.username
 LEFT JOIN item_table ON inventory.item_id = item_table.item_id;
 
-INSERT INTO inventory VALUES ('admin1', 1, 1);
-INSERT INTO inventory VALUES ('admin1', 2, 1);
-INSERT INTO inventory VALUES ('admin1', 4, 2);
-INSERT INTO inventory VALUES ('admin1', 5, 1);
-INSERT INTO inventory VALUES ('admin1', 8, 2);
-INSERT INTO inventory VALUES ('admin1', 11, 10);
+DELIMITER $proc_delim$
+CREATE PROCEDURE newInv (IN new_username VARCHAR(20), IN new_item_id INT, IN new_quantity INT)
+BEGIN
+	INSERT INTO inventory VALUES (new_username, new_item_id, new_quantity);
+END $proc_delim$
 
-INSERT INTO inventory VALUES ('admin2', 3, 2);
-INSERT INTO inventory VALUES ('admin2', 4, 1);
-INSERT INTO inventory VALUES ('admin2', 7, 1);
-INSERT INTO inventory VALUES ('admin2', 9, 2);
-INSERT INTO inventory VALUES ('admin2', 10, 1);
-INSERT INTO inventory VALUES ('admin2', 11, 9);
+DELIMITER ;
 
-INSERT INTO inventory VALUES ('user1', 2, 1);
-INSERT INTO inventory VALUES ('user1', 4, 1);
-INSERT INTO inventory VALUES ('user1', 8, 1);
+CALL newInv('admin1', 1, 1);
+CALL newInv('admin1', 2, 1);
+CALL newInv('admin1', 4, 2);
+CALL newInv('admin1', 5, 1);
+CALL newInv('admin1', 8, 2);
+CALL newInv('admin1', 11, 10);
 
-INSERT INTO inventory VALUES ('user2', 1, 1);
-INSERT INTO inventory VALUES ('user2', 2, 1);
-INSERT INTO inventory VALUES ('user2', 6, 1);
-INSERT INTO inventory VALUES ('user2', 11, 3);
+CALL newInv('admin2', 3, 2);
+CALL newInv('admin2', 4, 1);
+CALL newInv('admin2', 7, 1);
+CALL newInv('admin2', 9, 2);
+CALL newInv('admin2', 10, 1);
+CALL newInv('admin2', 11, 9);
 
-INSERT INTO inventory VALUES ('user3', 7, 1);
-INSERT INTO inventory VALUES ('user3', 9, 1);
+CALL newInv('user1', 2, 1);
+CALL newInv('user1', 4, 1);
+CALL newInv('user1', 8, 1);
 
-INSERT INTO inventory VALUES ('user4', 1, 1);
-INSERT INTO inventory VALUES ('user4', 2, 1);
-INSERT INTO inventory VALUES ('user4', 6, 1);
-INSERT INTO inventory VALUES ('user4', 8, 1);
+CALL newInv('user2', 1, 1);
+CALL newInv('user2', 2, 1);
+CALL newInv('user2', 6, 1);
+CALL newInv('user2', 11, 3);
 
-INSERT INTO inventory VALUES ('user5', 7, 1);
-INSERT INTO inventory VALUES ('user5', 8, 1);
-INSERT INTO inventory VALUES ('user5', 10, 1);
-INSERT INTO inventory VALUES ('user5', 11, 5);
+CALL newInv('user3', 7, 1);
+CALL newInv('user3', 9, 1);
+
+CALL newInv('user4', 1, 1);
+CALL newInv('user4', 2, 1);
+CALL newInv('user4', 6, 1);
+CALL newInv('user4', 8, 1);
+
+CALL newInv('user5', 7, 1);
+CALL newInv('user5', 8, 1);
+CALL newInv('user5', 10, 1);
+CALL newInv('user5', 11, 5);

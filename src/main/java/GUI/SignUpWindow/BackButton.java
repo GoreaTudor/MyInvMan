@@ -16,6 +16,9 @@ class BackButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        BaseFrame.getSignUpPanel().getUsernameField().setText("");
+        BaseFrame.getSignUpPanel().getPasswordField().setText("");
+
         BaseFrame.signUpPanelVisibility(false);
         BaseFrame.welcomePanelVisibility(true);
     }

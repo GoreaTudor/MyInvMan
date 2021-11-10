@@ -25,14 +25,12 @@ class SubmitSignUpButton extends JButton implements ActionListener {
         String username = BaseFrame.getSignUpPanel().getUsernameField().getText();
         char[] password = BaseFrame.getSignUpPanel().getPasswordField().getPassword();
         int hashedPWD = Arrays.hashCode(password);
-        boolean isAdminCheckbox = BaseFrame.getSignUpPanel().getIsAdminCheckBox().isSelected();
+        boolean isAdmin = BaseFrame.getSignUpPanel().getIsAdminCheckBox().isSelected();
 
-        int isAdmin = (isAdminCheckbox)? 1 : 0;
-
-        System.out.println(username);
-        System.out.println(password);
-        System.out.println(hashedPWD);
-        System.out.println(isAdmin);
+        System.out.println("username=" + username);
+        System.out.println("password=" + password);
+        System.out.println("hashedPWD=" + hashedPWD);
+        System.out.println("isAdmin=" + isAdmin);
         System.out.println();
 
         try {

@@ -1,4 +1,4 @@
-package Data;
+package Data.Database;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ public class DatabaseConnector {
 
     private DatabaseConnector () {
         try {
-            Scanner scanner = new Scanner(new File("src/main/java/Data/DatabaseInfo.txt"));
+            Scanner scanner = new Scanner(new File("src/main/java/Data/Database/DatabaseInfo.txt"));
 
             connection = DriverManager.getConnection(scanner.next(), scanner.next(), scanner.next());
             statement = connection.createStatement();

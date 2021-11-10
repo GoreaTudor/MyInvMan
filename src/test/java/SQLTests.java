@@ -1,7 +1,5 @@
 import Data.Database.DatabaseConnector;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.sql.ResultSet;
@@ -12,7 +10,7 @@ public class SQLTests {
     @Test
     public void connectionTest () {
         try {
-            ResultSet rs = DatabaseConnector.getInstance().getStatement().executeQuery("select * from inventory_view;");
+            ResultSet rs = DatabaseConnector.getStatement().executeQuery("select * from inventory_view;");
 
 //            while (rs.next()) {
 //                System.out.println(rs.getString(1) + " " +
@@ -27,14 +25,14 @@ public class SQLTests {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Assertions.assertFalse(true);
+            Assertions.fail();
         }
     }
 
     @Test
     public void countingTest_usingSelect() {
         try {
-            ResultSet rs = DatabaseConnector.getInstance().getStatement().executeQuery("select count(username) from user_table");
+            ResultSet rs = DatabaseConnector.getStatement().executeQuery("select count(username) from user_table");
 
             while (rs.next()) {
                 //System.out.println(rs.getString(1)); // should return 7
@@ -43,7 +41,7 @@ public class SQLTests {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            Assertions.assertFalse(true);
+            Assertions.fail();
         }
     }
 }

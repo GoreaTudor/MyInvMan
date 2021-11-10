@@ -43,7 +43,7 @@ public class DatabaseConnector {
         return connection;
     }
 
-    public Statement getStatement() {
-        return statement;
+    public static Statement getStatement() {
+        return instance.statement;
     }
 }

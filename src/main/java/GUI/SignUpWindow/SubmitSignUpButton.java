@@ -17,8 +17,13 @@ class SubmitSignUpButton extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(BaseFrame.getSignUpPanel().getUsernameField().getText());
-        System.out.println(Arrays.hashCode(BaseFrame.getSignUpPanel().getPasswordField().getPassword()));
+        String username = BaseFrame.getSignUpPanel().getUsernameField().getText();
+        int password = Arrays.hashCode(BaseFrame.getSignUpPanel().getPasswordField().getPassword());
+        boolean isAdmin = BaseFrame.getSignUpPanel().getIsAdminCheckBox().isSelected();
+
+        System.out.println(username);
+        System.out.println(password);
+        System.out.println(isAdmin);
         System.out.println();
     }
 }

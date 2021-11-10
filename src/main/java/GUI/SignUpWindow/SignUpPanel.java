@@ -8,6 +8,7 @@ public class SignUpPanel extends JPanel {
     private JTextField usernameField;
     private JLabel passwordLabel;
     private JPasswordField passwordField;
+    private JCheckBox isAdminCheckBox;
     private SubmitSignUpButton submitSignUpButton;
     private BackButton backButton;
 
@@ -18,6 +19,7 @@ public class SignUpPanel extends JPanel {
         usernameField = new JTextField();
         passwordLabel = new JLabel("Password:");
         passwordField = new JPasswordField();
+        isAdminCheckBox = new JCheckBox("Admin");
         submitSignUpButton = new SubmitSignUpButton();
         backButton = new BackButton();
 
@@ -25,6 +27,7 @@ public class SignUpPanel extends JPanel {
         this.add(usernameField);
         this.add(passwordLabel);
         this.add(passwordField);
+        this.add(isAdminCheckBox);
         this.add(submitSignUpButton);
         this.add(backButton);
 
@@ -37,5 +40,9 @@ public class SignUpPanel extends JPanel {
 
     public JPasswordField getPasswordField() {
         return passwordField;
+    }
+
+    public JCheckBox getIsAdminCheckBox() {
+        return isAdminCheckBox;
     }
 }
